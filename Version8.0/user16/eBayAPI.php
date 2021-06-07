@@ -6,7 +6,7 @@ $endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';  // URL to
 $version = '1.0.0';  // API version supported by your application
 $appid = 'RobertMa-Shakopee-PRD-169ec6b8e-bb30ba02';  // Replace with your own AppID
 $globalid = 'EBAY-US';  // Global ID of the eBay site you want to search (e.g., EBAY-DE)
-$query = 'xbox';  // You may want to supply your own query
+$query = 'movies';  // You may want to supply your own query
 $safequery = urlencode($query);  // Make the query URL-friendly
 $i = '0';  // Initialize the item filter index to 0
 // Create a PHP array of the item filters you want to use in your request
@@ -82,14 +82,14 @@ if ($resp->ack == "Success") {
         $title = $item->title;
         /////////////////////////EDIT THIS LINE/////////////////////////////////////////////////////
         // For each SearchResultItem node, build a link and append it to $results
-        if(condition 1){
-        $results .= "<div class='col-sm-4'><td><img src=\"$pic\"></td><td><a href=\"$link\">$title</a></td></div>";
+        if($i % 4 === 1){
+        $results .= "$price<div class='row'><div class='col'><span>$price</span><img src=\"$pic\"><a href=\"$link\">$title</a></div>";
         }
-        if(condition 2 3){
-            $results .= "<div class='col-sm-4'><td><img src=\"$pic\"></td><td><a href=\"$link\">$title</a></td></div>";
+        if($i % 4===2 || $i % 4 === 3){
+            $results .= "<div class='col'><td><img src=\"$pic\"><a href=\"$link\">$title</a></div>";
         }
-        if(condition 4){
-            $results .= "<div class='col-sm-4'><td><img src=\"$pic\"></td><td><a href=\"$link\">$title</a></td></div></div>";
+        if($i % 4===0 ){
+            $results .= "<div class='col'><img src=\"$pic\"><a href=\"$link\">$title</a></div></div>";
         }
 
         ////////////////////////EDIT THIS LINE//////////////////////////////////////////////////////      
@@ -105,6 +105,31 @@ else {
 <html>
 
 <head>
+<menu>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <a href="http://shakonet.isd720.com" class="navbar-brand">WebDev</a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <!--↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ Edit These Items in your Menu ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+                    <a href="login.php" class="nav-item nav-link">Home</a>
+                    <a href="emojimovie.html" class="nav-item nav-link ">Bad movie</a>
+                    <a href="soul.html" class="nav-item nav-link ">Soul</a>
+                    <a href="okmovie.html" class="nav-item nav-link">ok movie</a>
+                    <a href="goodmovie2.html" class="nav-item nav-link">another good movie</a>
+                    <a href="CRUD/phpDemo-master/index.php" class="nav-item nav-link">CRUD</a>
+                    <a href="eBayAPI.php" class="nav-item nav-link active">Other movies</a>
+                    <!--↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ Edit These Items in your Menu ↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+                </div>
+                <div class="navbar-nav ml-auto">
+                    <a href="#" class="nav-item nav-link disabled">Login</a>
+                </div>
+            </div>
+        </nav>
+    </menu>
     <title>eBay Search Results for <?php echo $query; ?></title>
     <style type="text/css">
         body {
